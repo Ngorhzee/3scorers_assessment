@@ -1,0 +1,1 @@
+enum GroupEnum {matchOverview,shots,attacks,passes,duels,defending,goalKeeping,}
