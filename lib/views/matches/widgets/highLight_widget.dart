@@ -82,18 +82,22 @@ class _HighLightWidgetState extends State<HighLightWidget> {
                         )
                       ],
                     )),
-                    Container(
-                      height: 50.w,
-                      width: 50.w,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Pallet.white.withOpacity(.7),
-                      ),
-                      child: Center(
+                    InkWell(
+                      onTap: () async =>
+                          await launchUrl(state.highlightData.url ?? ""),
+                      child: Container(
+                        height: 50.w,
+                        width: 50.w,
+                        padding: EdgeInsets.fromLTRB(14.5.w, 12.5, 10.w, 12.h),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Pallet.white.withOpacity(.7),
+                        ),
                         child: ImageLoader(
-                          height: 24.w,
-                          width: 24.w,
+                          height: 25.w,
+                          width: 25.w,
                           path: AppAssets.play,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),

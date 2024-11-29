@@ -7,6 +7,7 @@ import 'package:livesscore/bloc_providers/highlight/high_light_bloc.dart';
 import 'package:livesscore/bloc_providers/incidents/incidents_bloc.dart';
 import 'package:livesscore/bloc_providers/match_details/match_details_bloc.dart';
 import 'package:livesscore/bloc_providers/matchstats/match_stats_bloc.dart';
+import 'package:livesscore/core/constants/app_assets.dart';
 import 'package:livesscore/core/constants/app_colors.dart';
 import 'package:livesscore/core/utils/locator.dart';
 import 'package:livesscore/views/splash/splash_view.dart';
@@ -17,8 +18,32 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Future<void> _precacheImages() async {
+    try {
+      await Future.wait([
+        precacheImage(AssetImage(AppAssets.logo), context),
+        precacheImage(AssetImage(AppAssets.pitch), context),
+        precacheImage(AssetImage(AppAssets.pitch2), context),
+      ]);
+      print("Images precached successfully.");
+    } catch (e) {
+      print("Error while precaching images: $e");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _precacheImages();
+  }
 
   // This widget is the root of your application.
   @override

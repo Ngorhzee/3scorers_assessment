@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:livesscore/core/constants/app_assets.dart';
 import 'package:livesscore/core/constants/app_colors.dart';
+import 'package:livesscore/views/base_view/base_view.dart';
 import 'package:livesscore/views/matches/matches_view.dart';
 import 'package:livesscore/widgets/image_loader.dart';
 
@@ -18,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(
         Duration(seconds: 2),
         () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const MatchesView())));
+            MaterialPageRoute(builder: (context) => const BaseView())));
     super.initState();
   }
 

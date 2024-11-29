@@ -7,6 +7,7 @@ import 'package:livesscore/core/constants/app_colors.dart';
 import 'package:livesscore/core/constants/data.dart';
 import 'package:livesscore/core/utils/utils.dart';
 import 'package:livesscore/models/incidents_model.dart';
+import 'package:livesscore/views/matches/widgets/player_widget.dart';
 import 'package:livesscore/widgets/app_text.dart';
 import 'package:livesscore/widgets/image_loader.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -110,7 +111,7 @@ class _MatchStatsWidgetState extends State<MatchStatsWidget> {
                   ),
                 );
               }
-              return SizedBox();
+              return const SizedBox();
             },
           )
         ],
@@ -173,15 +174,15 @@ class TimelineFootball extends StatelessWidget {
             indicatorStyle: IndicatorStyle(
               // width: 40,
               // height: 40,
-              indicator: _TimelineFootballIndicator(
+              indicator: TimelineFootballIndicator(
                   time: event.time?.toString() ?? (5 - index).toString()),
               drawGap: true,
             ),
-            afterLineStyle: LineStyle(
-              color: Pallet.primaryColor,
-              thickness: 1,
-            ),
-            beforeLineStyle: LineStyle(
+            // afterLineStyle: const LineStyle(
+            //   color: Pallet.primaryColor,
+            //   thickness: 1,
+            // ),
+            beforeLineStyle: const LineStyle(
               color: Pallet.primaryColor,
               thickness: 1,
             ),
@@ -197,10 +198,9 @@ class TimelineFootball extends StatelessWidget {
         List<Widget> children = [
           PlayerWidget(
             playerName: incident.player?.shortName ?? "",
-      
             isHome: incident.isHome ?? false,
           ),
-          Spacer(),
+          const Spacer(),
           ImageLoader(
             height: 20.w,
             width: 20.w,
@@ -233,10 +233,9 @@ class TimelineFootball extends StatelessWidget {
                 children: [
                   PlayerWidget(
                     playerName: incident.player?.shortName ?? "",
-                   
                     isHome: true,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   ImageLoader(
                     height: 20.w,
                     width: 20.w,
@@ -259,10 +258,9 @@ class TimelineFootball extends StatelessWidget {
                     dColor: Pallet.blackColor,
                     fit: BoxFit.cover,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   PlayerWidget(
                     playerName: incident.player?.shortName ?? "",
-                    
                     isHome: false,
                   ),
                 ],
@@ -273,19 +271,18 @@ class TimelineFootball extends StatelessWidget {
                 children: [
                   PlayerWidget(
                     playerName: incident.player?.shortName ?? "",
-                    
                     reason: incident.reason?.name ?? "",
                     isHome: true,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     width: 13.w,
                     height: 20.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
                         color: incident.incidentClass == "yellow"
-                            ? Color(0xffFFE500)
-                            : Color(0xffEF222A)),
+                            ? const Color(0xffFFE500)
+                            : const Color(0xffEF222A)),
                   )
                 ],
               )
@@ -301,14 +298,13 @@ class TimelineFootball extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2.r),
                         color: incident.incidentClass == "yellow"
-                            ? Color(0xffFFE500)
-                            : Color(0xffEF222A)),
+                            ? const Color(0xffFFE500)
+                            : const Color(0xffEF222A)),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   PlayerWidget(
                     playerName: incident.player?.shortName ?? "",
                     reason: incident.reason?.name ?? "",
-                
                     isHome: false,
                   ),
                 ],
@@ -359,7 +355,7 @@ class TimelineFootball extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           ImageLoader(
             height: 20.w,
             width: 20.w,
@@ -370,70 +366,13 @@ class TimelineFootball extends StatelessWidget {
         return Row(
             children: incident.isHome! ? children : children.reversed.toList());
       default:
-        return SizedBox();
+        return const SizedBox();
     }
   }
 }
 
-class PlayerWidget extends StatelessWidget {
-  const PlayerWidget({
-    super.key,
-    required this.playerName,
-    this.reason,
-
-    required this.isHome,
-  });
-  final String playerName;
-
-  final String? reason;
-  final bool isHome;
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> children = [
-      reason != null
-          ? Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment:
-                  isHome ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-              children: [
-                AppText.bodyMedium(
-                  playerName,
-                  color: Pallet.blackColor,
-                ),
-                SizedBox(
-                  height: 4.h,
-                ),
-                AppText.bodySmall(
-                  reason ?? "",
-                  color: Pallet.greyColor.shade100,
-                )
-              ],
-            )
-          : AppText.bodyMedium(
-              playerName,
-              color: Pallet.blackColor,
-            ),
-      SizedBox(
-        width: 4.w,
-      ),
-        ImageLoader(
-                    height: 30.w,
-                    width: 30.w,
-                    isCircular: true,
-                    radius: 32.5.w,
-                    fit: BoxFit.contain,
-                    blob: convertToBlobImage(playerImage),
-                  ),
-    ];
-    return Row(
-      children: isHome ? children.reversed.toList() : children,
-    );
-  }
-}
-
-class _TimelineFootballIndicator extends StatelessWidget {
-  const _TimelineFootballIndicator({super.key, required this.time});
+class TimelineFootballIndicator extends StatelessWidget {
+  const TimelineFootballIndicator({super.key, required this.time});
 
   final String time;
 
@@ -441,7 +380,7 @@ class _TimelineFootballIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(maxWidth: 20.w, minHeight: 20.w),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Pallet.primaryColor,
         shape: BoxShape.circle,
       ),

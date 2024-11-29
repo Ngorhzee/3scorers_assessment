@@ -59,25 +59,16 @@ class _MatchesViewState extends State<MatchesView> {
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Stack(
                           children: [
-                            ImageLoader(
-                              height: 24.w,
-                              width: 24.w,
-                              path: AppAssets.menu,
-                              fit: BoxFit.cover,
-                            ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ImageLoader(
-                                  path: AppAssets.logo,
-                                  height: 38.w,
-                                  width: 60.w,
-                                  fit: BoxFit.fitHeight,
-                                ),
-                                SizedBox(
-                                  width: 37.w,
+                                  height: 24.w,
+                                  width: 24.w,
+                                  path: AppAssets.menu,
+                                  fit: BoxFit.cover,
                                 ),
                                 Container(
                                   padding: EdgeInsets.symmetric(
@@ -107,7 +98,15 @@ class _MatchesViewState extends State<MatchesView> {
                                   ),
                                 ),
                               ],
-                            )
+                            ),
+                            Center(
+                              child: ImageLoader(
+                                path: AppAssets.logo,
+                                height: 38.w,
+                                width: 60.w,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(
