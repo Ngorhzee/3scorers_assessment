@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:livesscore/core/constants/app_assets.dart';
+
 import 'package:livesscore/core/constants/app_colors.dart';
 
 class PitchBackgroundWidget extends StatelessWidget {

@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:livesscore/bloc_providers/chart/chart_bloc.dart';
-import 'package:livesscore/bloc_providers/match_details/match_details_bloc.dart';
+
 import 'package:livesscore/bloc_providers/matchstats/match_stats_bloc.dart';
 import 'package:livesscore/core/constants/app_colors.dart';
 import 'package:livesscore/core/utils/utils.dart';
-import 'package:livesscore/models/chart_model.dart';
-import 'package:livesscore/models/match_details_model.dart';
-import 'package:livesscore/models/stat_item_model.dart';
 import 'package:livesscore/widgets/app_text.dart';
 import 'package:livesscore/widgets/dashboard_container_widget.dart';
 import 'package:livesscore/widgets/image_loader.dart';
 import 'package:shimmer/shimmer.dart';
+
 
 class ChartWidget extends StatefulWidget {
   const ChartWidget(
@@ -120,7 +118,7 @@ class _ChartWidgetState extends State<ChartWidget> {
                   ),
                 );
               }
-              return SizedBox();
+              return const SizedBox();
             },
           ),
           SizedBox(
@@ -156,7 +154,7 @@ class _ChartWidgetState extends State<ChartWidget> {
               Expanded(
                 child: Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 140.h,
                       width: 1.sw,
                       child: Column(
@@ -187,14 +185,15 @@ class _ChartWidgetState extends State<ChartWidget> {
                           return SizedBox(
                             height: 140.h,
                             width: 1.sw,
-                            child: BarChart(
+                            child:
+                                BarChart(
                               BarChartData(
                                 maxY: 10,
                                 minY: -10,
+                                groupsSpace: 10.w,
                                 barGroups: state.chartData.graphPoints
                                     .map((entry) => BarChartGroupData(
                                           x: entry.minute.toInt(),
-                                          barsSpace: 50.w,
                                           barRods: [
                                             BarChartRodData(
                                               borderRadius:
@@ -204,7 +203,7 @@ class _ChartWidgetState extends State<ChartWidget> {
                                               color: entry.value >= 0
                                                   ? widget.homeColor
                                                   : widget.awayColor,
-                                              width: 6.w,
+                                              width: 5.w,
                                             ),
                                           ],
                                         ))
@@ -228,7 +227,7 @@ class _ChartWidgetState extends State<ChartWidget> {
                                     showTitles: false,
                                   )),
                                 ),
-                                gridData: FlGridData(show: false),
+                                gridData: const FlGridData(show: false),
                                 borderData: FlBorderData(show: false),
                                 backgroundColor: Colors.transparent,
                                 alignment: BarChartAlignment.spaceAround,
@@ -236,7 +235,7 @@ class _ChartWidgetState extends State<ChartWidget> {
                             ),
                           );
                         }
-                        return SizedBox();
+                        return const SizedBox();
                       },
                     ),
                   ],
@@ -252,6 +251,5 @@ class _ChartWidgetState extends State<ChartWidget> {
         ],
       ),
     );
-    
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:livesscore/bloc_providers/highlight/high_light_bloc.dart';
 import 'package:livesscore/bloc_providers/match_details/match_details_bloc.dart';
 import 'package:livesscore/core/constants/app_assets.dart';
 import 'package:livesscore/core/constants/app_colors.dart';
@@ -57,10 +56,14 @@ class _MatchDetailsViewState extends State<MatchDetailsView> {
                               children: [
                                 Row(
                                   children: [
-                                    ImageLoader(
-                                      height: 24.w,
-                                      width: 24.w,
-                                      path: AppAssets.arrowRight,
+                                    InkWell(
+                                      radius: 24.w,
+                                      onTap: ()=>Navigator.pop(context),
+                                      child: ImageLoader(
+                                        height: 24.w,
+                                        width: 24.w,
+                                        path: AppAssets.arrowRight,
+                                      ),
                                     ),
                                     Expanded(
                                         child: Center(

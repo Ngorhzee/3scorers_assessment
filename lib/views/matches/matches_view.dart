@@ -6,7 +6,6 @@ import 'package:livesscore/bloc_providers/match_details/match_details_bloc.dart'
 import 'package:livesscore/core/constants/app_assets.dart';
 import 'package:livesscore/core/constants/app_colors.dart';
 import 'package:livesscore/core/constants/data.dart';
-import 'package:livesscore/core/constants/text_styles.dart';
 import 'package:livesscore/core/utils/utils.dart';
 import 'package:livesscore/models/league_model.dart';
 import 'package:livesscore/views/matches/match_details_view.dart';
@@ -252,7 +251,7 @@ class _MatchesViewState extends State<MatchesView> {
                         ],
                       );
                     }
-                    return SizedBox();
+                    return const SizedBox();
                   },
                 ),
               ),

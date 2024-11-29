@@ -1,16 +1,10 @@
 # livesscore
 
-A new Flutter project.
+3 scorer assesment.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is my submission to the assesment.
 
-A few resources to get you started if this is your first Flutter project:
+[View the Assesment Documentation](https://docs.google.com/document/d/1IqLP7P9fhTAoIBn3Q9miXoazW0v7yquqqGfzT9iGEWQ/edit?usp=sharing)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
